@@ -24,5 +24,5 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         flask.flash('Login requested for user {}, remember_me={}'.format(form.username.data, form.remember_me.data))
-        return flask.redirect('/index')
+        return flask.redirect(flask.url_for('index'))
     return flask.render_template('login.html', title='Sign In', form=form)
