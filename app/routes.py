@@ -1,7 +1,8 @@
 import flask
 from flask import request
 from app import app
-from app.forms import LoginForm
+from app import db
+from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
 from werkzeug.urls import url_parse
@@ -45,3 +46,17 @@ def login():
 def logout():
     logout_user()
     return flask.redirect(flask.url_for('index'))
+
+@app.route('/register', methods=['GET','POST'])
+def register():
+    if current_user.is_authenticated:
+        return flask.redirect(flask.url_for('index'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flask.flash('Congratulations, you are now a registered user!')
+        return flask.redirect(flask.url_for('login'))
+    return flask.render_template('register.html', title='Register', form=form)
