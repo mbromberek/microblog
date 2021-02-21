@@ -26,16 +26,8 @@ def index():
         db.session.commit()
         flask.flash('Your post is now live!')
         return flask.redirect(flask.url_for('index'))
-    posts = [
-        {
-            'author':{'username':'John'},
-            'body':'Beautiful day in Portland!'
-        },
-        {
-            'author':{'username':'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
+
+    posts = current_user.followed_posts().all()
     site_code = flask.render_template('index.html', title='Home Page', form=form, posts=posts)
     return site_code
 
