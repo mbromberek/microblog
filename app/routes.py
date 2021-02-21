@@ -2,9 +2,9 @@ import flask
 from flask import request
 from app import app
 from app import db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
 
@@ -14,11 +14,18 @@ def before_request():
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET','POST'])
+@app.route('/index', methods=['GET','POST'])
 @login_required
 def index():
-    user = {'username': 'Miguel'}
+    # user = {'username': 'Miguel'}
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flask.flash('Your post is now live!')
+        return flask.redirect(flask.url_for('index'))
     posts = [
         {
             'author':{'username':'John'},
@@ -29,8 +36,9 @@ def index():
             'body': 'The Avengers movie was so cool!'
         }
     ]
-    site_code = flask.render_template('index.html', title='Home', posts=posts)
+    site_code = flask.render_template('index.html', title='Home Page', form=form, posts=posts)
     return site_code
+
 
 @app.route('/login', methods=['GET','POST'])
 def login():
