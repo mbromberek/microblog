@@ -1,3 +1,5 @@
 
 *.pyc
 app.db
+migrations/.DS_Store
+.DS_Store
