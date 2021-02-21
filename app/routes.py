@@ -27,9 +27,18 @@ def index():
         flask.flash('Your post is now live!')
         return flask.redirect(flask.url_for('index'))
 
-    posts = current_user.followed_posts().all()
-    site_code = flask.render_template('index.html', title='Home Page', form=form, posts=posts)
+    page = request.args.get('page', 1, type=int)
+    posts = current_user.followed_posts().paginate(page, app.config['POSTS_PER_PAGE'], False)
+    site_code = flask.render_template('index.html', title='Home Page', form=form, posts=posts.items)
     return site_code
+
+
+@app.route('/explore')
+@login_required
+def explore():
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(page, app.config['POSTS_PER_PAGE'], False)
+    return flask.render_template('index.html', title='Explore', posts=posts.items)
 
 
 @app.route('/login', methods=['GET','POST'])
@@ -131,10 +140,3 @@ def unfollow(username):
         return flask.redirect(flask.url_for('user', username=username))
     else:
         return flask.redirect(flask.url_for('index'))
-
-
-@app.route('/explore')
-@login_required
-def explore():
-    posts = Post.query.order_by(Post.timestamp.desc()).all()
-    return flask.render_template('index.html', title='Explore', posts=posts)
