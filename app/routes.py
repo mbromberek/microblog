@@ -131,3 +131,10 @@ def unfollow(username):
         return flask.redirect(flask.url_for('user', username=username))
     else:
         return flask.redirect(flask.url_for('index'))
+
+
+@app.route('/explore')
+@login_required
+def explore():
+    posts = Post.query.order_by(Post.timestamp.desc()).all()
+    return flask.render_template('index.html', title='Explore', posts=posts)
