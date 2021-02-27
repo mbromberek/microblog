@@ -101,7 +101,7 @@ def follow(username):
             return flask.redirect(flask.url_for('main.user', username=username))
         current_user.follow(user)
         db.session.commit()
-        flask.flash(_('You are following %{username}s!', username=username))
+        flask.flash(_('You are following %(username)s!', username=username))
         return flask.redirect(flask.url_for('main.user', username=username))
     else:
         return flask.redirect(flask.url_for('main.index'))
@@ -120,7 +120,7 @@ def unfollow(username):
             return flask.redirect(flask.url_for('main.user', username=username))
         current_user.unfollow(user)
         db.session.commit()
-        flask.flash(_('You are not following %{username}s!', username=username))
+        flask.flash(_('You are not following %(username)s!', username=username))
         return flask.redirect(flask.url_for('main.user', username=username))
     else:
         return flask.redirect(flask.url_for('main.index'))
