@@ -4,3 +4,4 @@ app.db
 migrations/.DS_Store
 .DS_Store
 messages.pot
+.env

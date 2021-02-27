@@ -1,0 +1,59 @@
+2021-02-27 16:04:00,059 ERROR: Exception on /edit_profile [POST] [in /Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/mikeyb/Code/microblog/app/main/routes.py", line 84, in edit_profile
+    return flask.redirect(flask.url_for('edit_profile'))
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/helpers.py", line 357, in url_for
+    rv = url_adapter.build(
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/werkzeug/routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'edit_profile'. Did you mean 'main.edit_profile' instead?
+2021-02-27 16:06:37,137 ERROR: Exception on /edit_profile [POST] [in /Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/mikeyb/Code/microblog/app/main/routes.py", line 84, in edit_profile
+    return flask.redirect(flask.url_for('main.edit_profile'))
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/flask/helpers.py", line 357, in url_for
+    rv = url_adapter.build(
+  File "/Users/mikeyb/.virtualenvs/microblog/lib/python3.8/site-packages/werkzeug/routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'edit_profile'. Did you mean 'main.edit_profile' instead?
+2021-02-27 16:06:42,010 INFO: Microblog startup [in /Users/mikeyb/Code/microblog/app/__init__.py:74]
