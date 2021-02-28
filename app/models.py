@@ -27,7 +27,7 @@ class SearchableMixin(object):
         session._changes = {
             'add': list(session.new),
             'update': list(session.dirty),
-            'delete': list(sesion.deleted)
+            'delete': list(session.deleted)
         }
 
     @classmethod
