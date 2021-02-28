@@ -14,3 +14,16 @@ workon microblog
 export FLASK_APP=microblog.py
 flask run
 ```
+
+
+### Reindex Posts Elasticsearch
+```
+flask shell
+from app.models import User, Post
+Post.reindex()
+
+# search from command line
+query, total = Post.search('food', 1, 5)
+total
+query.all()
+```
