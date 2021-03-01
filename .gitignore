@@ -6,3 +6,4 @@ migrations/.DS_Store
 messages.pot
 .env
 *.log
+.vagrant/*
