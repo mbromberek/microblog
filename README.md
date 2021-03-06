@@ -15,6 +15,10 @@ export FLASK_APP=microblog.py
 flask run
 ```
 
+### Start elasticsearch from terminal
+```
+elasticsearch
+```
 
 ### Reindex Posts Elasticsearch
 ```
