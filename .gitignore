@@ -8,3 +8,4 @@ messages.pot
 *.log
 .vagrant/*
 logs/*
+dump.rdb

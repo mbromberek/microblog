@@ -31,3 +31,11 @@ query, total = Post.search('food', 1, 5)
 total
 query.all()
 ```
+
+### Redis Queue (RQ)
+```
+brew install redis
+
+% redis-server
+% rq worker microblog-tasks
+```
