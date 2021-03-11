@@ -147,7 +147,7 @@ class User(UserMixin, db.Model):
         return task
 
     def get_tasks_in_progress(self):
-        return Task.query.filter_by(user=self, complet=False).all()
+        return Task.query.filter_by(user=self, complete=False).all()
 
     def get_task_in_progress(self, name):
         return Task.query.filter_by(name=name, user=self, complete=False).first()
